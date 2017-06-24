@@ -1,0 +1,68 @@
+.main-page-logo{
+  margin-top: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-x: hidden;
+}
+
+.main-page-logo__text{
+  font-size: 100px;
+}
+
+.task-container,.login-container,.signup-container{
+	margin-top: 50px;
+}
+
+.tagline{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 90px;
+}
+
+.task-tagline{
+  font-family:Comic Sans MS, cursive, sans-serif;
+}
+
+
+.controls{
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+a:active{
+-webkit-box-shadow: 0 0 5px rgba(0,0,0, .75);
+-moz-box-shadow: 0 0 5px rgba(0,0,0, .75);
+box-shadow: 0 0 5px rgba(0,0,0, .75);
+}
+
+.button {
+    padding: 8px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    margin-left:10px;
+    cursor: pointer;
+  }
+
+.login {
+    background-color: white;
+    color: black;
+    border: 1px solid ;
+    border-radius: 5px
+}
+
+.signup {
+    background-color: white;
+    color: black;
+    border: 1px solid ;
+    border-radius: 5px
+}
+
+a{
+  text-decoration: none !important;
+}

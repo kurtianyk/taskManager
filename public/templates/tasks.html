@@ -1,0 +1,117 @@
+<div class="container">
+     <ng-include src="'templates/logout.html'"></ng-include>
+</div>
+
+<div class="container task-container">
+    <h1>Tasks list</h1>
+
+    <div>
+      <table class="table table-striped task-table">
+            <thead>
+              <tr>
+          
+                <th>№</th>
+                <th>Task Name</th>
+                <th>Description</th>
+                <th>Created by</th>
+                
+                <th>  <button id="btn-add" class="btn btn-success btn-xs" ng-click="toggle('add', 0)">Add New Record</button>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="task in tasks">
+                <td>{{$index + 1}}</td>
+                <td>{{ task.taskname }}</td>
+                <td>{{ task.description }}</td>
+                <td>{{ task.created_by }}</td>
+                <td>
+                  <button class="btn btn-warning btn-xs " ng-click="toggle('edit', task._id)">
+                    <span class="glyphicon glyphicon-edit"></span>
+                  </button>
+                  <button class="btn btn-danger btn-xs " ng-click="confirmDelete(task._id)">
+                    <span class="glyphicon glyphicon-trash"></span>
+                  </button>
+                  <button class="btn btn-primary btn-xs btn-delete" ng-click="share(task._id)">
+                    <span class="glyphicon glyphicon-share"></span>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+
+          <!--show modal-->
+
+         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+           <div class="modal-dialog">
+             <div class="modal-content">
+               <div class="modal-header">
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                 <span aria-hidden="true">×</span>
+               </button>
+               <h4 class="modal-title" id="myModalLabel">{{form_title}}</h4>
+               </div>
+               <div class="modal-body">
+
+                 <form name="frmTask" class="form-horizontal" novalidate="">
+                 <div class="form-group">
+                   <label class="col-sm-3 control-label">Task Name</label>
+                   <div class="col-sm-9">
+                     <input type="text" class="form-control" id="taskname" name="taskname" placeholder="Taskname" value="{{taskname}}" ng-model="task.taskname"  ng-required="true">
+                     <span ng-show="frmTask.taskname.$invalid && frmTask.taskname.$touched">Task Name field is required</span>
+                   </div>
+                 </div>
+                 <div class="form-group">
+                   <label class="col-sm-3 control-label">Description</label>
+                   <div class="col-sm-9">
+                     <input type="text" class="form-control" id="description" name="description" placeholder="Description" value="{{description}}" ng-model="task.description"  ng-required="true">
+                     <span ng-show="frmTask.description.$invalid && frmTask.description.$touched">Description field is required</span>
+                   </div>
+                 </div>
+
+               </form>
+               </div>
+               <div class="modal-footer">
+               <button type="button" class="btn btn-primary" id="btn-save" ng-click="save(modalstate, id)" ng-disabled="frmTask.$invalid">Save Changes</button>
+             </div>
+
+
+             </div>
+           </div>
+         </div>
+
+         <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+           <div class="modal-dialog">
+             <div class="modal-content">
+               <div class="modal-header">
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                 <span aria-hidden="true">×</span>
+               </button>
+               <h4 class="modal-title" id="myModalLabel">{{form_title}}</h4>
+               </div>
+               <div class="modal-body">
+
+                 <form name="frmShare" class="form-horizontal" novalidate="">
+                 <div class="form-group">
+                   <label class="col-sm-3 control-label">Email</label>
+                   <div class="col-sm-9">
+                     <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email"  ng-model="task.email"  ng-required="true">
+                     <span ng-show="frmShare.email.$invalid && frmShare.email.$touched">Email field is required</span>
+                   </div>
+                 </div>
+
+               </form>
+               </div>
+               <div class="modal-footer">
+               <button type="button" class="btn btn-primary" id="btn-save" ng-click="shareSave()" ng-disabled="frmShare.$invalid">Share Task</button>
+             </div>
+
+
+             </div>
+           </div>
+         </div>
+
+        </div>
+    </div>
+    	
